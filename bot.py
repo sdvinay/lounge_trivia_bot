@@ -1,17 +1,12 @@
-import pickle
-import os.path
 import sys
 
 answers = ['Dykstra', 'Backman', 'Hernandez', 'Carter', 'Strawberry', 'Foster', 'Johnson', 'Santana', 'Gooden']
 
-if (os.path.exists('bot_state.p')):
-    (answered_by, incorrect_guesses) = pickle.load(open("bot_state.p", "rb"))
-else:
-    answered_by = {}
-    for answer in answers:
-        answered_by[answer] = None
+answered_by = {}
+for answer in answers:
+    answered_by[answer] = None
 
-    incorrect_guesses = []
+incorrect_guesses = []
 
 guesses = sys.argv[2:]
 guesser = sys.argv[1]
@@ -38,5 +33,3 @@ print()
 print('Incorrect guesses:')
 for guess in incorrect_guesses:
     print(guess)
-
-pickle.dump((answered_by, incorrect_guesses), open("bot_state.p", "wb"))
