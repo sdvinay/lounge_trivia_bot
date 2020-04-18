@@ -18,11 +18,15 @@ def print_row(row):
     print(f"  {row}")
 
 
+def sanitize_guess(guess):
+    return guess.strip()
+
+
 with open('fixtures/guesses.csv') as f:
     reader = csv.reader(f)
     for response in reader:
         guesser = response[0]
-        guesses = response[1:]
+        guesses = map(sanitize_guess, response[1:])
         print_header(f'{guesser}\'s Guesses:')
         for guess in guesses:
             if guess in answers:
