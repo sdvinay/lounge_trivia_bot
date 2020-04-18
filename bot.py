@@ -22,23 +22,28 @@ def sanitize_guess(guess):
     return guess.strip()
 
 
-with open('fixtures/guesses.csv') as f:
-    reader = csv.reader(f)
-    for response in reader:
-        guesser = response[0]
-        guesses = map(sanitize_guess, response[1:])
-        print_header(f'{guesser}\'s Guesses:')
-        for guess in guesses:
-            if guess in answers:
-                if answered_by[guess]:
-                    print_row(f"{guess}: Correct, but already named by {answered_by[guess]}")
-                else:
-                    print_row(f"{guess}: DING!  Correct")
-                    answered_by[guess] = guesser
+def get_guesses():
+    with open('fixtures/guesses.csv') as f:
+        reader = csv.reader(f)
+        for response in reader:
+            guesser = response[0]
+            guesses = map(sanitize_guess, response[1:])
+            yield (guesser, guesses)
+
+
+for (guesser, guesses) in get_guesses():
+    print_header(f'{guesser}\'s Guesses:')
+    for guess in guesses:
+        if guess in answers:
+            if answered_by[guess]:
+                print_row(f"{guess}: Correct, but already named by {answered_by[guess]}")
             else:
-                print_row(f"{guess}: Incorrect")
-                if guess not in incorrect_guesses:
-                    incorrect_guesses.append(guess)
+                print_row(f"{guess}: DING!  Correct")
+                answered_by[guess] = guesser
+        else:
+            print_row(f"{guess}: Incorrect")
+            if guess not in incorrect_guesses:
+                incorrect_guesses.append(guess)
 
 
 print_header('Correct Answers:')
