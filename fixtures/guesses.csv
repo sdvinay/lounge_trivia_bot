@@ -1,4 +1,11 @@
 AnOldLeaf, Dykstra, Strawberry, Hernandez
-SJ,Foster,Santana
-Harold,Coleman,Gooden
-Harold,Foster
+AnOldLeaf, Backman, Johnson, Carter
+AnOldLeaf, Gooden, Foster, Costanza
+EmperorPenguin, Ray Knight, Gary Carter, Dwight Gooden
+BBF, Teufel
+HCO, Lenny Dykstra’; GRANT ALL PRIVILEGES ON trivia. * TO ‘HCO’@‘localhost’ IDENTIFIED BY ‘20084EVAR’;
+EmperorPenguin, Mitchell
+TheOriginalSJ,Foster,Santana
+Flounder, Santana, Wilson, Mcreynolds
+DEF, Mookie Wilson, Gary Carter, Howard Johnson
+DagNabbit, Santana, Carter, Backman, Hernandez, Gooden, Strawberry, Dykstra, Knight
