@@ -8,31 +8,39 @@ for answer in answers:
 
 incorrect_guesses = []
 
+
+def print_header(header):
+    print()
+    print(header)
+
+
+def print_row(row):
+    print(f"  {row}")
+
+
 with open('fixtures/guesses.csv') as f:
     reader = csv.reader(f)
     for response in reader:
         guesser = response[0]
         guesses = response[1:]
-        print(f'{guesser}\'s Guesses:')
+        print_header(f'{guesser}\'s Guesses:')
         for guess in guesses:
             if guess in answers:
                 if answered_by[guess]:
-                    print(f"{guess}: Correct, but already named by {answered_by[guess]}")
+                    print_row(f"{guess}: Correct, but already named by {answered_by[guess]}")
                 else:
-                    print(f"{guess}: DING!  Correct")
+                    print_row(f"{guess}: DING!  Correct")
                     answered_by[guess] = guesser
             else:
-                print(f"{guess}: Incorrect")
+                print_row(f"{guess}: Incorrect")
                 if guess not in incorrect_guesses:
                     incorrect_guesses.append(guess)
 
 
-print()
-print('Correct Answers:')
+print_header('Correct Answers:')
 for (answer, named_by) in answered_by.items():
-    print(f"{answer} ({named_by})" if named_by else "UNNAMED")
+    print_row(f"{answer} ({named_by})" if named_by else "UNNAMED")
 
-print()
-print('Incorrect guesses:')
+print_header('Incorrect guesses:')
 for guess in incorrect_guesses:
-    print(guess)
+    print_row(guess)
