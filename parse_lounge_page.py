@@ -9,18 +9,18 @@ def get_lounge_posts(fp):
 
 with open("fixtures/lounge_6329_600.html") as fp:
     for post in get_lounge_posts(fp):
-        if '#LoungeTrivia_86Mets' not in post.text:
-            continue
-
         username = post.parent.parent.a.text
-        if 'Harold' in username:
+        post_time = post.parent.parent.parent.find_all('td')[1].text[8:]
+
+        if '#LoungeTrivia_86Mets' not in post.text or 'Harold' in username:
             continue
 
-        post_time = post.parent.parent.parent.find_all('td')[1].text
+        # The guesses are in the text that follows the quote
+        # So find the quote, and then move to the following siblings
         cursor = post.blockquote
         guesses = []
         while cursor and cursor.find_next_sibling('p'):
             cursor = cursor.find_next_sibling('p')
-            guesses += cursor.text.split("\n")
+            guesses += cursor.text.split("\n")  # guesses may be in multiple lines in one <p>
 
-        print(username, post_time, guesses)
+        print(f"{post_time} {username}: {guesses}")
