@@ -1,8 +1,14 @@
 from bs4 import BeautifulSoup
 
-with open("fixtures/lounge_6329_600.html") as fp:
+
+def get_lounge_posts(fp):
     soup = BeautifulSoup(fp, features="lxml")
     for post in soup('div', 'post'):
+        yield post
+
+
+with open("fixtures/lounge_6329_600.html") as fp:
+    for post in get_lounge_posts(fp):
         if post.text.find('#LoungeTrivia_86Mets') > -1:
             username = post.parent.parent.a.text
             if username.find('Harold') == -1:
