@@ -1,4 +1,4 @@
-import csv
+import parse_lounge_page as parser
 
 answers = ['Dykstra', 'Backman', 'Hernandez', 'Carter', 'Strawberry', 'Foster', 'Johnson', 'Santana', 'Gooden']
 
@@ -23,16 +23,15 @@ def sanitize_guess(guess):
 
 
 def get_guesses():
-    with open('fixtures/guesses.csv') as f:
-        reader = csv.reader(f)
-        for response in reader:
-            guesser = response[0]
-            guesses = map(sanitize_guess, response[1:])
-            yield (guesser, guesses)
+    with open("fixtures/lounge_6329_600.html") as fp:
+        for response in parser.get_guesses(fp):
+            yield response
 
 
-for (guesser, guesses) in get_guesses():
-    print_header(f'{guesser}\'s Guesses:')
+for response in get_guesses():
+    guesser = response['username']
+    guesses = response['guesses']
+    print_header(f'{guesser}\'s Guesses (post {response["num"]}):')
     for guess in guesses:
         if guess in answers:
             if answered_by[guess]:
