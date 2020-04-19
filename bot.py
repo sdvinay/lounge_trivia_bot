@@ -30,7 +30,7 @@ def get_guesses():
 
 for response in get_guesses():
     guesser = response['username']
-    guesses = response['guesses']
+    guesses = map(sanitize_guess, response['guesses'])
     print_header(f'{guesser}\'s Guesses (post {response["num"]}):')
     for guess in guesses:
         if guess in answers:
