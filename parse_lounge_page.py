@@ -40,5 +40,5 @@ def get_guesses(fp):
 
 if __name__ == "__main__":
     with open("fixtures/lounge_6329_600.html") as fp:
-        for response in get_guesses(fp):
-            print(response)
+        for r in get_guesses(fp):
+            print(f"{r.id} {r.num} {r.time[14:]} | {r.username}, {r.guesses}")
