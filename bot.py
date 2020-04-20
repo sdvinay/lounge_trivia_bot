@@ -32,11 +32,11 @@ for response in get_guesses():
     print_header(f'{guesser}\'s Guesses (post {response["num"]}):')
     for guess in guesses:
         if guess in already_answered:
-            print_row(f"{guess}: Correct, " +
-                      f"but already named by {already_answered[guess]}")
+            print_row(f"{guess}: Correct, but already named by " +
+                      f"{already_answered[guess]['username']}")
         elif guess in correct_answers:
             print_row(f"{guess}: DING!  Correct")
-            already_answered[guess] = guesser
+            already_answered[guess] = response
         else:
             print_row(f"{guess}: Incorrect")
             if guess not in incorrect_guesses:
@@ -46,7 +46,7 @@ for response in get_guesses():
 print_header('Correct answers:')
 for answer in correct_answers:
     if answer in already_answered:
-        print_row(f"{answer} ({already_answered[answer]})")
+        print_row(f"{answer} ({already_answered[answer]['username']})")
     else:
         print_row("UNNAMED")
 
