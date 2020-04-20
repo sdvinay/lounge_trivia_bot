@@ -1,4 +1,3 @@
-import csv
 from bs4 import BeautifulSoup
 
 
@@ -41,10 +40,5 @@ def get_guesses(fp):
 
 if __name__ == "__main__":
     with open("fixtures/lounge_6329_600.html") as fp:
-        output_file = 'generated/guesses_6329_600.csv'
-        with open(output_file, 'w', newline='') as csvfile:
-            fieldnames = ['time', 'num', 'id', 'username', 'guesses']
-            writer = csv.DictWriter(csvfile, fieldnames)
-            for response in get_guesses(fp):
-                print(response)
-                writer.writerow(response)
+        for response in get_guesses(fp):
+            print(response)
