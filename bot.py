@@ -19,11 +19,11 @@ def print_row(row):
 
 
 def sanitize_guess(guess):
-    return guess.strip()
+    return guess.strip()  # TODO obv need to do better
 
 
 def get_guesses():
-    with open("fixtures/lounge_6329_600_mod.html") as fp:
+    with open("fixtures/lounge_6329_600_mod.html") as fp:  # TODO
         for response in lounge_parser.get_guesses(fp):
             yield response
 
