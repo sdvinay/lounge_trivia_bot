@@ -2,40 +2,47 @@ import csv
 from bs4 import BeautifulSoup
 
 
+class LoungePost:
+    """ A lounge post"""
+
+
 def get_lounge_posts(fp):
     soup = BeautifulSoup(fp, features="lxml")
     for post in soup('div', 'post'):  # <div class="post">
-        yield post
+        response = LoungePost()
+        response.text = post.text
+        response.soup = post.parent.parent.parent
+        response.username = post.parent.parent.a.text
+        if 'Harold' in response.username:
+            continue
+        response.time = response.soup.find_all('td')[1].text[8:]
+        response.num = response.soup.find_all('a')[3].text[2:]
+        response.id = response.soup.find_all('a')[3]['name']
+        yield response
 
 
 def get_guesses(fp):
-    for post in get_lounge_posts(fp):
-        username = post.parent.parent.a.text
+    for response in get_lounge_posts(fp):
 
-        if '#LoungeTrivia_86Mets' not in post.text or 'Harold' in username:
+        if '#LoungeTrivia_86Mets' not in response.text:
             continue
-
-        response = {}
-        response['username'] = username
-        response['time'] = post.parent.parent.parent.find_all('td')[1].text[8:]
-        response['num'] = post.parent.parent.parent.find_all('a')[3].text[2:]
-        response['id'] = post.parent.parent.parent.find_all('a')[3]['name']
 
         # The guesses are in the text that follows the quote
         # So find the quote, and then move to the following siblings
-        cursor = post.blockquote
-        response['guesses'] = []
+        cursor = response.soup.blockquote
+        response.guesses = []
         # guesses might be in separate <p>s or in separate lines in one <p>
         while cursor and cursor.find_next_sibling('p'):
             cursor = cursor.find_next_sibling('p')
-            response['guesses'] += cursor.text.split("\n")
+            response.guesses += cursor.text.split("\n")
 
         yield(response)
 
 
 if __name__ == "__main__":
     with open("fixtures/lounge_6329_600.html") as fp:
-        with open('generated/guesses_6329_600.csv', 'w', newline='') as csvfile:
+        output_file = 'generated/guesses_6329_600.csv'
+        with open(output_file, 'w', newline='') as csvfile:
             fieldnames = ['time', 'num', 'id', 'username', 'guesses']
             writer = csv.DictWriter(csvfile, fieldnames)
             for response in get_guesses(fp):

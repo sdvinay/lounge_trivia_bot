@@ -27,15 +27,14 @@ def get_guesses():
 
 
 for response in get_guesses():
-    guesser = response['username']
-    guesses = map(sanitize_guess, response['guesses'])
-    print_header(f'{guesser}\'s Guesses (post {response["num"]}):')
+    guesser = response.username
+    guesses = map(sanitize_guess, response.guesses)
+    print_header(f'{guesser}\'s Guesses (post {response.num}):')
     for guess in guesses:
         if guess in already_answered:
-            answerer = already_answered[guess]['username']
-            prev_postnum = already_answered[guess]['num']
+            prev_post = already_answered[guess]
             print_row(f"{guess}: Correct, but already named by " +
-                      f"{answerer} in #{prev_postnum}")
+                      f"{prev_post.username} in #{prev_post.num}")
         elif guess in correct_answers:
             print_row(f"{guess}: DING!  Correct")
             already_answered[guess] = response
@@ -48,9 +47,8 @@ for response in get_guesses():
 print_header('Correct answers:')
 for answer in correct_answers:
     if answer in already_answered:
-        answerer = already_answered[answer]['username']
-        postnum = already_answered[answer]['num']
-        print_row(f"{answer} ({answerer} in #{postnum})")
+        post = already_answered[answer]
+        print_row(f"{answer} ({post.username} in #{post.num})")
     else:
         print_row("UNNAMED")
 
