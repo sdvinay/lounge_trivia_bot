@@ -21,7 +21,7 @@ def sanitize_guess(guess):
 
 
 def get_guesses():
-    with open("fixtures/lounge_6329_600.html") as fp:
+    with open("fixtures/lounge_6329_600_mod.html") as fp:
         for response in parser.get_guesses(fp):
             yield response
 
@@ -43,7 +43,7 @@ for response in get_guesses():
                 incorrect_guesses.append(guess)
 
 
-print_header('Correct correct_answers:')
+print_header('Correct answers:')
 for (answer, named_by) in already_answered.items():
     print_row(f"{answer} ({named_by})" if named_by else "UNNAMED")
 

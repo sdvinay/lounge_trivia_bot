@@ -1,6 +1,5 @@
 
 An Old Leaf's Guesses (post 603):
-  Dykstra: DING!  Correct
   Strawberry: DING!  Correct
   Hernandez: DING!  Correct
 
@@ -42,8 +41,7 @@ DEF's Guesses (post 624):
   Gary Carter: Incorrect
   Howard Johnson: Incorrect
 
-Correct correct_answers:
-  Dykstra (An Old Leaf)
+Correct answers:
   Strawberry (An Old Leaf)
   Hernandez (An Old Leaf)
   Backman (An Old Leaf)
