@@ -44,8 +44,11 @@ for response in get_guesses():
 
 
 print_header('Correct answers:')
-for (answer, named_by) in already_answered.items():
-    print_row(f"{answer} ({named_by})" if named_by else "UNNAMED")
+for answer in correct_answers:
+    if answer in already_answered:
+        print_row(f"{answer} ({already_answered[answer]})")
+    else:
+        print_row("UNNAMED")
 
 print_header('Incorrect guesses:')
 for guess in incorrect_guesses:

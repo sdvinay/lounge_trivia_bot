@@ -42,14 +42,15 @@ DEF's Guesses (post 624):
   Howard Johnson: Incorrect
 
 Correct answers:
-  Strawberry (An Old Leaf)
-  Hernandez (An Old Leaf)
+  UNNAMED
   Backman (An Old Leaf)
-  Johnson (An Old Leaf)
+  Hernandez (An Old Leaf)
   Carter (An Old Leaf)
-  Gooden (An Old Leaf)
+  Strawberry (An Old Leaf)
   Foster (An Old Leaf)
+  Johnson (An Old Leaf)
   Santana (The Original SJ)
+  Gooden (An Old Leaf)
 
 Incorrect guesses:
   Costanza
