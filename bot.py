@@ -1,6 +1,7 @@
 import parse_lounge_page as parser
 
-correct_answers = ['Dykstra', 'Backman', 'Hernandez', 'Carter', 'Strawberry', 'Foster', 'Johnson', 'Santana', 'Gooden']
+correct_answers = ['Dykstra', 'Backman', 'Hernandez', 'Carter',
+                   'Strawberry', 'Foster', 'Johnson', 'Santana', 'Gooden']
 
 already_answered = {}
 incorrect_guesses = []
@@ -31,7 +32,8 @@ for response in get_guesses():
     print_header(f'{guesser}\'s Guesses (post {response["num"]}):')
     for guess in guesses:
         if guess in already_answered:
-            print_row(f"{guess}: Correct, but already named by {already_answered[guess]}")
+            print_row(f"{guess}: Correct, " +
+                      f"but already named by {already_answered[guess]}")
         elif guess in correct_answers:
             print_row(f"{guess}: DING!  Correct")
             already_answered[guess] = guesser
