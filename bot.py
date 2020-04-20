@@ -3,9 +3,6 @@ import parse_lounge_page as parser
 answers = ['Dykstra', 'Backman', 'Hernandez', 'Carter', 'Strawberry', 'Foster', 'Johnson', 'Santana', 'Gooden']
 
 answered_by = {}
-for answer in answers:
-    answered_by[answer] = None
-
 incorrect_guesses = []
 
 
@@ -34,7 +31,7 @@ for response in get_guesses():
     print_header(f'{guesser}\'s Guesses (post {response["num"]}):')
     for guess in guesses:
         if guess in answers:
-            if answered_by[guess]:
+            if guess in answered_by:
                 print_row(f"{guess}: Correct, but already named by {answered_by[guess]}")
             else:
                 print_row(f"{guess}: DING!  Correct")
