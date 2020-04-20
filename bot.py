@@ -1,8 +1,10 @@
-import parse_lounge_page as parser
+import lounge_parser
 
-correct_answers = ['Dykstra', 'Backman', 'Hernandez', 'Carter',
-                   'Strawberry', 'Foster', 'Johnson', 'Santana', 'Gooden']
+METS_LINEUP = ['Dykstra', 'Backman', 'Hernandez',
+               'Carter', 'Strawberry', 'Foster',
+               'Johnson', 'Santana', 'Gooden']
 
+correct_answers = METS_LINEUP
 already_answered = {}
 incorrect_guesses = []
 
@@ -22,7 +24,7 @@ def sanitize_guess(guess):
 
 def get_guesses():
     with open("fixtures/lounge_6329_600_mod.html") as fp:
-        for response in parser.get_guesses(fp):
+        for response in lounge_parser.get_guesses(fp):
             yield response
 
 
