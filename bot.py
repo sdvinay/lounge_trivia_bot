@@ -1,8 +1,8 @@
 import parse_lounge_page as parser
 
-answers = ['Dykstra', 'Backman', 'Hernandez', 'Carter', 'Strawberry', 'Foster', 'Johnson', 'Santana', 'Gooden']
+correct_answers = ['Dykstra', 'Backman', 'Hernandez', 'Carter', 'Strawberry', 'Foster', 'Johnson', 'Santana', 'Gooden']
 
-answered_by = {}
+already_answered = {}
 incorrect_guesses = []
 
 
@@ -30,20 +30,19 @@ for response in get_guesses():
     guesses = map(sanitize_guess, response['guesses'])
     print_header(f'{guesser}\'s Guesses (post {response["num"]}):')
     for guess in guesses:
-        if guess in answers:
-            if guess in answered_by:
-                print_row(f"{guess}: Correct, but already named by {answered_by[guess]}")
-            else:
-                print_row(f"{guess}: DING!  Correct")
-                answered_by[guess] = guesser
+        if guess in already_answered:
+            print_row(f"{guess}: Correct, but already named by {already_answered[guess]}")
+        elif guess in correct_answers:
+            print_row(f"{guess}: DING!  Correct")
+            already_answered[guess] = guesser
         else:
             print_row(f"{guess}: Incorrect")
             if guess not in incorrect_guesses:
                 incorrect_guesses.append(guess)
 
 
-print_header('Correct Answers:')
-for (answer, named_by) in answered_by.items():
+print_header('Correct correct_answers:')
+for (answer, named_by) in already_answered.items():
     print_row(f"{answer} ({named_by})" if named_by else "UNNAMED")
 
 print_header('Incorrect guesses:')
