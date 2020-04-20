@@ -1,0 +1,67 @@
+
+An Old Leaf's Guesses (post 603):
+  Dykstra: DING!  Correct
+  Strawberry: DING!  Correct
+  Hernandez: DING!  Correct
+
+An Old Leaf's Guesses (post 604):
+  Backman: DING!  Correct
+  Johnson: DING!  Correct
+  Carter: DING!  Correct
+
+An Old Leaf's Guesses (post 606):
+  Gooden: DING!  Correct
+  Foster: DING!  Correct
+  Costanza: Incorrect
+
+Emperor Penguin's Guesses (post 609):
+  Ray Knight: Incorrect
+  Gary Carter: Incorrect
+  Dwight Gooden: Incorrect
+
+Bowling Baseball Fan's Guesses (post 610):
+  Teufel: Incorrect
+
+An Old Leaf's Guesses (post 613):
+  You fail, but it will be interesting to see how the bot parses the incorrect format.: Incorrect
+
+HCO's Guesses (post 615):
+  Lenny Dykstra’; GRANT ALL PRIVILEGES ON trivia. * TO ‘HCO’@‘localhost’ IDENTIFIED BY ‘20084EVAR’;: Incorrect
+
+The Original SJ's Guesses (post 618):
+  Foster: Correct, but already named by An Old Leaf
+  Santana: DING!  Correct
+
+Flounder is a charming man.'s Guesses (post 619):
+  Santana: Correct, but already named by The Original SJ
+  Wilson: Incorrect
+  Mcreynolds: Incorrect
+
+DEF's Guesses (post 624):
+  Mookie Wilson: Incorrect
+  Gary Carter: Incorrect
+  Howard Johnson: Incorrect
+
+Correct correct_answers:
+  Dykstra (An Old Leaf)
+  Strawberry (An Old Leaf)
+  Hernandez (An Old Leaf)
+  Backman (An Old Leaf)
+  Johnson (An Old Leaf)
+  Carter (An Old Leaf)
+  Gooden (An Old Leaf)
+  Foster (An Old Leaf)
+  Santana (The Original SJ)
+
+Incorrect guesses:
+  Costanza
+  Ray Knight
+  Gary Carter
+  Dwight Gooden
+  Teufel
+  You fail, but it will be interesting to see how the bot parses the incorrect format.
+  Lenny Dykstra’; GRANT ALL PRIVILEGES ON trivia. * TO ‘HCO’@‘localhost’ IDENTIFIED BY ‘20084EVAR’;
+  Wilson
+  Mcreynolds
+  Mookie Wilson
+  Howard Johnson
